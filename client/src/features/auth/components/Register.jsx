@@ -98,21 +98,10 @@ const Register = () => {
     }));
   };
 
-  const handlePhoneNumberChange = (e) => {
-    let value = e.target.value.replace(/\D/g, '');
-    
-    // Format as 977-XX-XXXXXXX
-    if (value.length <= 2) {
-      value = `977-${value}`;
-    } else if (value.length <= 4) {
-      value = `977-${value.slice(2)}`;
-    } else {
-      value = `977-${value.slice(2, 4)}-${value.slice(4, 11)}`;
-    }
-    
+  const handlePhoneNumberChange = (e) => { 
     setFormData(prev => ({
       ...prev,
-      phoneNumber: value
+      phoneNumber: e.target.value
     }));
   };
 
@@ -252,17 +241,17 @@ const Register = () => {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Phone Number
-                <Tooltip text="Format: 977-XX-XXXXXXX (Nepal)" />
+                <Tooltip text="Format: 9XXXXXXXXX" />
               </label>
               <input
                 type="tel"
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handlePhoneNumberChange}
-                placeholder="977-XX-XXXXXXX"
+                placeholder="9XXXXXXXXX"
                 className="form-input"
-                pattern="977-[0-9]{2}-[0-9]{7}"
-                maxLength="13"
+                pattern="^9[0-9]{9}"
+                maxLength="10"
                 required
               />
             </div>

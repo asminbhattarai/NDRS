@@ -28,7 +28,7 @@ export const validateRegistration = (data) => {
     middleName: z.string().optional(),
     lastName: z.string().min(2, 'Last name is required'),
     phoneNumber: z.string()
-      .regex(/^(\+977)?[9][6-9]\d{8}$/, 'Invalid Nepali phone number'),
+    .regex(/^9\d{9}$/, 'Invalid Nepali phone number'),
     address: z.string().min(5, 'Address is required'),
     district: z.enum(districts, {
       errorMap: () => ({ message: 'Please select a valid district' })
